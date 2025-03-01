@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Medicine } from '@models/medicine.model';
 import {Disease} from '@models/user-info.model';
+import { UserInfoService } from '@services/user-info.service';
+import { UserInfo } from '@models/user-info.model';
 
 @Component({
   selector: 'app-medicinepage',
@@ -44,6 +46,17 @@ throw new Error('Method not implemented.');
   }
 
   onSubmit() {
-    this.http.delete('http://localhost:8080/api/person/disease/'+ this.authService.getUserName() + this.diseaseList[0].id);
+    this.http.get<UserInfo>(`http://localhost:8080/api/person/` + this.authService.getUserName())
+      .subscribe(testuser => {
+        if (testuser.diseases && testuser.diseases.length > 0) {
+          this.http.delete(`http://localhost:8080/api/person/disease/${this.authService.getUserName()}/${testuser.diseases[0].id}`)
+            .subscribe(response => {
+              console.log('Disease deleted successfully', response);
+            });
+        } else {
+          console.log('No diseases found for the user.');
+        }
+      });
+      this.router.navigate(['/homepage']);
   }
 }
