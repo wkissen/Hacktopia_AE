@@ -16,10 +16,10 @@ public class CSVImportController {
     }
 
     @PostMapping
-    public String importCSV(@RequestBody String filepath) {
+    public String importCSV() {
         try {
             // Pass the file to the service for processing
-            csvImportService.importCSV(filepath);
+            csvImportService.importCSV();
             return "File uploaded and processed successfully!";
         } catch (Exception e) {
             return "Failed to upload and process the file: " + e.getMessage();
