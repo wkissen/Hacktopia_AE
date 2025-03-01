@@ -21,15 +21,18 @@ public class MedicineController {
 
     @PostMapping("/{name}/{Treatment}")
     public ResponseEntity<?> giveMedicineToPerson(@PathVariable String Treatment, @PathVariable String name) {
-        Long medicineId = medicineService.getMedicine(Treatment).getId();
-        medicineService.giveMedicineToPerson(name, medicineId);
-        return ResponseEntity.ok().build();
+        Medicine medicine = medicineService.getMedicine(Treatment);
+        medicineService.giveMedicineToPerson(name, medicine.getId());
+        return ResponseEntity.ok(medicine);
     }
 
-//
-//    @PostMapping("/{name}/{medicineId}")
-//    public ResponseEntity<?> giveMedicineToPerson(@PathVariable String name, @PathVariable Long medicineId) {
-//        medicineService.giveMedicineToPerson(name, medicineId);
-//        return ResponseEntity.ok().build();
-//    }
+    @GetMapping("/{name}")
+    public ResponseEntity<?> getMedicines(@PathVariable String name) {
+        try {
+            List<Medicine> medicines = medicineService.getAllMedicines(name);
+            return ResponseEntity.ok(medicines);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Failed to get medicines: " + e.getMessage());
+        }
+    }
 }
