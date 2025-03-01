@@ -25,10 +25,10 @@ public class CSVImportService {
 
     public void importCSV() {
         // Import disease data
-        importDiseaseCSV("src/main/resources/dataset_disease.csv");
+        importDiseaseCSV("dataset_disease.csv");
 
         // Import medicine data
-        importMedicineCSV("src/main/resources/dataset_medicines.csv");
+        importMedicineCSV("dataset_medicines.csv");
     }
 
     // Method to import and process disease data
@@ -37,9 +37,12 @@ public class CSVImportService {
              InputStreamReader reader = new InputStreamReader(inputStream);
              CSVReader csvReader = new CSVReader(reader)) {
 
+            // Check if the file is found
             if (inputStream == null) {
                 System.out.println("File not found: " + fileName);
                 return;
+            } else {
+                System.out.println("File found: " + fileName);
             }
 
             List<String[]> records = csvReader.readAll();
@@ -85,9 +88,12 @@ public class CSVImportService {
              InputStreamReader reader = new InputStreamReader(inputStream);
              CSVReader csvReader = new CSVReader(reader)) {
 
+            // Check if the file is found
             if (inputStream == null) {
                 System.out.println("File not found: " + fileName);
                 return;
+            } else {
+                System.out.println("File found: " + fileName);
             }
 
             List<String[]> records = csvReader.readAll();

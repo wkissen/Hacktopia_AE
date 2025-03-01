@@ -11,4 +11,5 @@ public class MedicineService {
     public MedicineService(MedicineRepository medicineRepository) {
         this.medicineRepository = medicineRepository;
     }
+
 }

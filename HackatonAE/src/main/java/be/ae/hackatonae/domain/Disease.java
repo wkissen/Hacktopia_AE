@@ -20,7 +20,7 @@ public class Disease {
     private String duration;
     private String infectious;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> symptoms;
 
     // Default constructor
