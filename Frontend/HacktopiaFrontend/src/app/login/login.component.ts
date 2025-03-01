@@ -7,13 +7,8 @@ import { Component } from '@angular/core';
   templateUrl: './login.component.html',
   standalone: true,
   imports: [
-<<<<<<< HEAD
     FormsModule,
   ]
-=======
-    FormsModule
-    ]
->>>>>>> 30235370b68989b12d587b61a553818b6df0d45b
 })
 export class LoginComponent {
   userName: string = '';
