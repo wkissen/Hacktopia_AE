@@ -40,4 +40,26 @@ public class PersonController {
             return ResponseEntity.badRequest().body("Failed to get person: " + e.getMessage());
         }
     }
+
+    @PostMapping("/createpeople")
+    public ResponseEntity<?> createPeople() {
+        try {
+            // Create people
+            personService.createpeople();
+            return ResponseEntity.ok("People created successfully!");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Failed to create people: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/{name}")
+    public ResponseEntity<?> getPersonByName(@PathVariable String name) {
+        try {
+            // Get the person by name
+            Person person = personService.getPersonByName(name);
+            return ResponseEntity.ok(person);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Failed to get person: " + e.getMessage());
+        }
+    }
 }

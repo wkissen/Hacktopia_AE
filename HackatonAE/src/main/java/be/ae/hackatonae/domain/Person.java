@@ -26,8 +26,7 @@ public class Person {
     }
 
     // Parameterized constructor
-    public Person(long id, String name, double weight, int age, double height) {
-        this.id = id;
+    public Person(String name, double weight, int age, double height) {
         this.name = name;
         this.weight = weight;
         this.age = age;
