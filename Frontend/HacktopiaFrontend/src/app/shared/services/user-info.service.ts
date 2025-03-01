@@ -7,7 +7,7 @@ import { UserInfo } from '@models/user-info.model';
   providedIn: 'root',
 })
 export class UserInfoService {
-  private readonly API_BASE = 'http://localhost:8079/api/person';
+  private readonly API_BASE = 'http://localhost:8080/api/person';
 
   constructor(private http: HttpClient) {}
 

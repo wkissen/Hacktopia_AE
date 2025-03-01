@@ -1,22 +1,31 @@
-<div class="max-w-2xl mx-auto mt-20 p-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg shadow-lg text-white">
-  <h2 class="text-3xl font-bold mb-8 text-center">Welcome {{username}}</h2>
-
-  <img src="/images/person.svg" alt="Lego Man" class="mx-auto my-4" style="filter: brightness(0) saturate(100%) invert(1); width: 350px; height: auto;">
-
-  <div class="mx-auto my-4" style="width:100%; max-width:300px; border:2px solid white; border-radius:4px; height:20px; background: transparent;">
-    <div style="background: white; height: 100%; border-radius: 4px;" [style.width.%]="healthBar"></div>
+<div class="max-w-2xl mx-auto mt-20 p-8 bg-white/10 backdrop-blur-md rounded-xl shadow-2xl text-white">
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+    <div class="bg-white/20 rounded-lg p-4 text-center shadow-md backdrop-blur-sm">
+      <h3 class="text-lg font-semibold">Weight</h3>
+      <p class="mt-2 text-xl">{{ userInfo?.weight }} kg</p>
+    </div>
+    <div class="bg-white/20 rounded-lg p-4 text-center shadow-md backdrop-blur-sm">
+      <h3 class="text-lg font-semibold">Age</h3>
+      <p class="mt-2 text-xl">{{ userInfo?.age }} years</p>
+    </div>
+    <div class="bg-white/20 rounded-lg p-4 text-center shadow-md backdrop-blur-sm">
+      <h3 class="text-lg font-semibold">Height</h3>
+      <p class="mt-2 text-xl">{{ userInfo?.height }} cm</p>
+    </div>
   </div>
-
-  <div class="mb-6 text-center">
-    <button
-      class="w-full py-3 px-6 bg-gradient-to-r from-yellow-400 to-orange-600 text-white font-semibold rounded-lg shadow-lg hover:from-yellow-500 hover:to-orange-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition ease-in-out duration-300 transform hover:scale-105"
-      (click)="onLogout()">
+  <h2 class="text-3xl font-bold text-center mb-6">Welcome {{ username }}</h2>
+  <div class="flex justify-center my-4">
+    <img src="/images/person.svg" alt="Lego Man" class="w-80 h-auto filter invert" />
+  </div>
+  <div class="w-full max-w-sm mx-auto my-4 border border-white rounded-md h-4 bg-transparent">
+    <div class="bg-white h-full rounded-md" [style.width.%]="healthBar"></div>
+  </div>
+  <div class="space-y-4 mt-6">
+    <button class="w-full py-3 bg-gradient-to-r from-yellow-400 to-orange-600 rounded-lg shadow-lg transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" (click)="onLogout()">
       Logout
     </button>
-    <button
-      class="w-full py-3 px-6 bg-gradient-to-r from-orange-600 to-yellow-400 text-white font-semibold rounded-lg shadow-lg hover:from-yellow-500 hover:to-orange-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition ease-in-out duration-300 transform hover:scale-105"
-      (click)="onSicknessQuestionnaire()">
-      Sickness questionnaire
+    <button class="w-full py-3 bg-gradient-to-r from-orange-600 to-yellow-400 rounded-lg shadow-lg transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" (click)="onSicknessQuestionnaire()">
+      Sickness Questionnaire
     </button>
-  </div> 
+  </div>
 </div>

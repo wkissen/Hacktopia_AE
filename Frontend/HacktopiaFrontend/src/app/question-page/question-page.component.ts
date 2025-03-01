@@ -41,7 +41,7 @@ export class QuestionPageComponent {
     };
 
     try {
-      const response = await axios.post('http://localhost:8079/api/disease', data);
+      const response = await axios.post('http://localhost:8080/api/disease', data);
       this.disease = response.data; // Store the response in the disease property
       console.log('Response:', response.data); // Log the response to verify
     } catch (error) {

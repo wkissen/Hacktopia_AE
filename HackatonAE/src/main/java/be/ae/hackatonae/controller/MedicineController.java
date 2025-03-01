@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/medicine")
-@CrossOrigin("*")
+@CrossOrigin("localhost:4200")
 public class MedicineController {
     private MedicineService medicineService;
 

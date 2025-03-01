@@ -28,6 +28,7 @@ export class HomepageComponent implements OnInit {
     if (this.username) {
       this.userInfoService.getUserInfo(this.username).subscribe(info => {
         this.userInfo = info;
+        
         this.healthBar = 100 - info.diseases.length * 20;
       });
     }
