@@ -22,4 +22,18 @@ public class PersonService {
     public List<Person> getAllPersons(){
         return personRepository.findAll();
     }
+
+    public void createpeople(){
+        List<Person> people = List.of(
+                new Person("Sami", 65.0, 21, 177.0),
+                new Person("Wesley", 105.3, 37, 160.0),
+                new Person("Sander", 82.7, 80, 180.0),
+                new Person("Rune", 104.2, 23, 173)
+        );
+        personRepository.saveAll(people);
+    }
+
+    public Person getPersonByName(String name){
+        return personRepository.findPersonByName(name);
+    }
 }
