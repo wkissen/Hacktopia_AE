@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/person")
+@CrossOrigin("*")
 public class PersonController {
     private PersonService personService;
 

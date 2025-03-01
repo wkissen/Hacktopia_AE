@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@services/auth-service.service';
+import { UserInfoService } from '@services/user-info.service';
+import { UserInfo } from '@models/user-info.model';
 
 @Component({
   selector: 'app-homepage',
@@ -11,12 +13,24 @@ import { AuthService } from '@services/auth-service.service';
 })
 export class HomepageComponent implements OnInit {
   username: string | null = null;
+  userInfo: UserInfo | null = null;
   showerror: boolean = false;
+  healthBar : Number | null = null;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private userInfoService: UserInfoService
+  ) {}
 
   ngOnInit(): void {
     this.username = this.authService.getUserName();
+    if (this.username) {
+      this.userInfoService.getUserInfo(this.username).subscribe(info => {
+        this.userInfo = info;
+        this.healthBar = 100 - info.diseases.length * 20;
+      });
+    }
   }
 
   onSicknessQuestionnaire() {
@@ -27,5 +41,4 @@ export class HomepageComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['']);
   }
-
 }
