@@ -36,4 +36,16 @@ public class PersonService {
     public Person getPersonByName(String name){
         return personRepository.findPersonByName(name);
     }
+
+    public void removeDiseaseFromPerson(String name, Long diseaseId) {
+        Person person = personRepository.findPersonByName(name);
+        person.getDiseases().removeIf(disease -> disease.getId().equals(diseaseId));
+        personRepository.save(person);
+    }
+
+    public void removeMedicineFromPerson(String name, Long medicineId) {
+        Person person = personRepository.findPersonByName(name);
+        person.getMedicines().removeIf(medicine -> medicine.getId() == medicineId);
+        personRepository.save(person);
+    }
 }

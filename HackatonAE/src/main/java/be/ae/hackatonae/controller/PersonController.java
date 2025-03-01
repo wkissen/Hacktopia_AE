@@ -63,4 +63,26 @@ public class PersonController {
             return ResponseEntity.badRequest().body("Failed to get person: " + e.getMessage());
         }
     }
+
+    @DeleteMapping("/disease/{name}/{diseaseId}")
+    public ResponseEntity<?> removeDiseaseFromPerson(@PathVariable String name, @PathVariable Long diseaseId) {
+        try {
+            // Remove disease from person
+            personService.removeDiseaseFromPerson(name, diseaseId);
+            return ResponseEntity.ok("Disease removed successfully!");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Failed to remove disease: " + e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/medicine/{name}/{medicineId}")
+    public ResponseEntity<?> removeMedicineFromPerson(@PathVariable String name, @PathVariable Long medicineId) {
+        try {
+            // Remove medicine from person
+            personService.removeMedicineFromPerson(name, medicineId);
+            return ResponseEntity.ok("Medicine removed successfully!");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Failed to remove medicine: " + e.getMessage());
+        }
+    }
 }

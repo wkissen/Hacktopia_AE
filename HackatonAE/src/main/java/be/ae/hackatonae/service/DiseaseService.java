@@ -4,6 +4,7 @@ import be.ae.hackatonae.controller.dto.DiseaseDTO;
 import be.ae.hackatonae.domain.Disease;
 import be.ae.hackatonae.domain.Person;
 import be.ae.hackatonae.repository.DiseaseRepository;
+import be.ae.hackatonae.repository.MedicineRepository;
 import be.ae.hackatonae.repository.PersonRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +15,13 @@ import java.util.Random;
 public class DiseaseService {
     private DiseaseRepository diseaseRepository;
     private PersonRepository personRepository;
+    private MedicineRepository medicineRepository;
 
-    public DiseaseService(DiseaseRepository diseaseRepository, PersonRepository personRepository) {
+    public DiseaseService(DiseaseRepository diseaseRepository,
+                          PersonRepository personRepository, MedicineRepository medicineRepository) {
         this.diseaseRepository = diseaseRepository;
         this.personRepository = personRepository;
+        this.medicineRepository = medicineRepository;
     }
 
     public Disease getDisease(DiseaseDTO diseaseDTO) {
