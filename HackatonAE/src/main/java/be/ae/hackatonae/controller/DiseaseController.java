@@ -5,10 +5,7 @@ import be.ae.hackatonae.domain.Disease;
 import be.ae.hackatonae.service.DiseaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,4 +25,9 @@ public class DiseaseController {
         return ResponseEntity.ok(disease);
     }
 
+    @PostMapping("/{name}/{id}")
+    public ResponseEntity<?> personHasDisease(@PathVariable String name, @PathVariable long id) {
+        diseaseService.personHasDisease(name, id);
+        return ResponseEntity.ok().build();
+    }
 }

@@ -4,10 +4,7 @@ import be.ae.hackatonae.domain.Medicine;
 import be.ae.hackatonae.service.MedicineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +22,11 @@ public class MedicineController {
     public ResponseEntity<?> getMedicine(@PathVariable String Treatment) {
         List<Medicine> medicine = medicineService.getMedicine(Treatment);
         return ResponseEntity.ok(medicine);
+    }
+
+    @PostMapping("/{name}/{medicineId}")
+    public ResponseEntity<?> giveMedicineToPerson(@PathVariable String name, @PathVariable Long medicineId) {
+        medicineService.giveMedicineToPerson(name, medicineId);
+        return ResponseEntity.ok().build();
     }
 }
