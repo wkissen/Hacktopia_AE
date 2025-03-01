@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import axios from 'axios';
-import { DiseaseCardComponent } from '../disease-card/disease-card.component';
 import { NgIf } from '@angular/common';
 import { AuthService } from '../shared/services/auth-service.service';
 import { DiseaseCardPopupComponent } from '@components/disease-card-popup/disease-card-popup.component';
@@ -12,7 +11,7 @@ import { DiseaseCardPopupComponent } from '@components/disease-card-popup/diseas
   templateUrl: './question-page.component.html',
   styleUrls: ['./question-page.component.css'],
   standalone: true,
-  imports: [FormsModule, DiseaseCardComponent, DiseaseCardPopupComponent, NgIf]
+  imports: [FormsModule, DiseaseCardPopupComponent, NgIf]
 })
 export class QuestionPageComponent {
   symptoms = {
@@ -24,13 +23,14 @@ export class QuestionPageComponent {
     coughing: false
   };
 
-  fever: boolean = false; // Added fever property
-  disease: any; // Added disease property
+  fever: boolean = false; 
+  disease: any; 
+  medicine: any;
 
   constructor(private router: Router, private  authService: AuthService ) {}
 
   ngOnInit(): void {
-    this.disease = null; // Clear the disease property on initialization
+    this.disease = null; 
   }
   async onSubmit() {
     const sendSymptomList: string[] = [];
@@ -42,14 +42,15 @@ export class QuestionPageComponent {
 
     const data = {
       symptoms: sendSymptomList,
-      fever: this.fever ? 'yes' : 'no' // Convert boolean to "yes" or "no"
+      fever: this.fever ? 'yes' : 'no' 
     };
 
     try {
       const response = await axios.post('http://localhost:8080/api/disease', data);
-      this.disease = response.data; // Store the response in the disease property
+      this.disease = response.data; 
       await axios.post('http://localhost:8080/api/disease/' + this.authService.getUserName() + '/' + this.disease.id , data);
-      console.log('Response:', response.data); // Log the response to verify
+      //this.medicine = await axios.post('http://localhost:8080/api/medicine/' + this.authService.getUserName() + '/' + this.disease.type , data);
+      console.log('Response:', response.data); 
       console.log('disease', this.disease);
     } catch (error) {
       console.error('Error:', error);
