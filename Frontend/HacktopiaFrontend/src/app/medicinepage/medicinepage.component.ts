@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Medicine } from '@models/medicine.model';
+import {Disease} from '@models/user-info.model';
 
 @Component({
   selector: 'app-medicinepage',
@@ -18,6 +19,7 @@ throw new Error('Method not implemented.');
 }
 
   medicineList: Medicine[] = [];
+  diseaseList: Disease[] = [];
   selectedDays: { [key: string]: string[] } = {};
   
 
@@ -27,14 +29,21 @@ throw new Error('Method not implemented.');
     this.getUserMedicine().subscribe(data => {
       this.medicineList = data;
     });
+    
+    this.getDiseases().subscribe(data => {
+      this.diseaseList = data;
+    });
   }
 
   getUserMedicine(): Observable<Medicine[]> {
     return this.http.get<Medicine[]>('http://localhost:8080/api/medicine/'+ this.authService.getUserName());
   }
 
+  getDiseases(): Observable<Disease[]> {
+    return this.http.get<Disease[]>(`http://localhost:8080/api/person/disease` + this.authService.getUserName());
+  }
+
   onSubmit() {
-    console.log('Selected Days:', this.selectedDays);
-    // You can send this.selectedDays to your backend if needed
+    this.http.delete('http://localhost:8080/api/person/disease/'+ this.authService.getUserName() + this.diseaseList[0].id);
   }
 }
