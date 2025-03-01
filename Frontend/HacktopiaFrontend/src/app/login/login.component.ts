@@ -1,15 +1,19 @@
 import { AuthService } from '@services/auth-service.service';
 import { FormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   standalone: true,
   imports: [
+<<<<<<< HEAD
+    FormsModule,
+  ]
+=======
     FormsModule
     ]
+>>>>>>> 30235370b68989b12d587b61a553818b6df0d45b
 })
 export class LoginComponent {
   userName: string = '';
