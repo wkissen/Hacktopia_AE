@@ -1,18 +1,17 @@
 import { AuthService } from '@services/auth-service.service';
-import {FormsModule} from '@angular/forms';
-import {Component} from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
- imports: [
-  FormsModule
- ]
+  standalone: true,
+  imports: [
+    FormsModule,
+    NavbarComponent
+  ]
 })
-
-
-
 export class LoginComponent {
   userName: string = '';
   password: string = '';
@@ -23,7 +22,7 @@ export class LoginComponent {
 
   onLogin(): void {
     if (this.userName && this.password) {
-      if(!this.authService.login(this.userName, this.password)) {
+      if (!this.authService.login(this.userName, this.password)) {
         this.showerror = true;
         this.errorMessage = 'Invalid username or password.';
         return;
