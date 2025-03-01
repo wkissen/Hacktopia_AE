@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/services/auth-service.service';
 import { Router } from '@angular/router';
-import axios from 'axios';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { Medicine } from '@models/medicine.model';
 import { Observable } from 'rxjs';
+import { Medicine } from '@models/medicine.model';
 
 @Component({
   selector: 'app-medicinepage',
@@ -13,26 +12,29 @@ import { Observable } from 'rxjs';
   templateUrl: './medicinepage.component.html',
   styleUrl: './medicinepage.component.css'
 })
-export class MedicinepageComponent {
+export class MedicinepageComponent implements OnInit {
+toggleDay(arg0: string,_t16: string) {
+throw new Error('Method not implemented.');
+}
 
+  medicineList: Medicine[] = [];
+  selectedDays: { [key: string]: string[] } = {};
+  
 
-  constructor(private router: Router,private http: HttpClient ,private  authService: AuthService ) {}
+  constructor(private router: Router, private http: HttpClient, private authService: AuthService) {}
 
+  ngOnInit(): void {
+    this.getUserMedicine().subscribe(data => {
+      this.medicineList = data;
+    });
+  }
 
-  // async onSubmit() {
-  //   try {
-  //     const response = await axios.delete('http://localhost:8080/api/disease', data);
-  //     this.disease = response.data; 
-  //     await axios.post('http://localhost:8080/api/disease/' + this.authService.getUserName() + '/' + this.disease.id , data);
-  //     //this.medicine = await axios.post('http://localhost:8080/api/medicine/' + this.authService.getUserName() + '/' + this.disease.type , data);
-  //     console.log('Response:', response.data); 
-  //     console.log('disease', this.disease);
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //   }
-  // }
+  getUserMedicine(): Observable<Medicine[]> {
+    return this.http.get<Medicine[]>('http://localhost:8080/api/medicine/'+ this.authService.getUserName());
+  }
 
-  getUserMedicine(name: string): Observable<Medicine[]> {
-    return this.http.get<Medicine[]>(`http://localhost:8080/api/person/${name}`);
+  onSubmit() {
+    console.log('Selected Days:', this.selectedDays);
+    // You can send this.selectedDays to your backend if needed
   }
 }
