@@ -15,15 +15,15 @@ import {Component} from '@angular/core';
 
 export class LoginComponent {
   userName: string = '';
-  role: string = '';
+  password: string = '';
   errorMessage: string = '';
   showerror: boolean = false;
 
   constructor(private authService: AuthService) {}
 
   onLogin(): void {
-    if (this.userName && this.role) {
-      if(!this.authService.login(this.userName, this.role)){
+    if (this.userName && this.password) {
+      if(!this.authService.login(this.userName, this.password)) {
         this.showerror = true;
         this.errorMessage = 'Invalid username or role.';
         return;
