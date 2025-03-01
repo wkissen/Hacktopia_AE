@@ -1,13 +1,13 @@
-<div class="card" *ngIf="disease">
-  <h2>{{ disease.diseaseName }}</h2>
-  <p><strong>Type:</strong> {{ disease.type }}</p>
-  <p><strong>Heart Rate:</strong> {{ disease.heartRate }}</p>
-  <p><strong>Breath Rate:</strong> {{ disease.breathRate }}</p>
-  <p><strong>Blood Pressure:</strong> {{ disease.bloodPressure }}</p>
-  <p><strong>Duration:</strong> {{ disease.duration }}</p>
-  <p><strong>Fever:</strong> {{ disease.fever }}</p>
-  <p><strong>Infectious:</strong> {{ disease.infectious }}</p>
-  <p><strong>Incubation Time:</strong> {{ disease.incubationTime }} days</p>
-  <p><strong>Period of Illness:</strong> {{ disease.periodOfIllness }} days</p>
-  <p><strong>Symptoms:</strong> {{ disease.symptoms.join(', ') }}</p>
+<div class="max-w-2xl mx-auto mt-20 p-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg shadow-lg text-white" *ngIf="disease">
+  <h2 class="text-2xl font-bold mb-4">{{ disease.diseaseName }}</h2>
+  <p class="mb-2"><strong>Type:</strong> {{ disease.type }}</p>
+  <p class="mb-2"><strong>Heart Rate:</strong> {{ disease.heartRate }}</p>
+  <p class="mb-2"><strong>Breath Rate:</strong> {{ disease.breathRate }}</p>
+  <p class="mb-2"><strong>Blood Pressure:</strong> {{ disease.bloodPressure }}</p>
+  <p class="mb-2"><strong>Duration:</strong> {{ disease.duration }}</p>
+  <p class="mb-2"><strong>Fever:</strong> {{ disease.fever }}</p>
+  <p class="mb-2"><strong>Infectious:</strong> {{ disease.infectious }}</p>
+  <p class="mb-2"><strong>Incubation Time:</strong> {{ disease.incubationTime }} days</p>
+  <p class="mb-2"><strong>Period of Illness:</strong> {{ disease.periodOfIllness }} days</p>
+  <p class="mb-2"><strong>Symptoms:</strong> {{ disease.symptoms.join(', ') }}</p>
 </div>
