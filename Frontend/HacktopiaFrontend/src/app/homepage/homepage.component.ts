@@ -10,45 +10,22 @@ import { Location } from '@angular/common';
   templateUrl: './homepage.component.html',
 })
 export class HomepageComponent implements OnInit {
-  role: string | null = null;
   username: string | null = null;
   showerror: boolean = false;
-  comments: Comment[] = [];
-  searchParams = {
-    content: '',
-    author: '',
-    fromDate: '',
-    toDate: '',
-  };
-  newComments: { [postId: string]: string } = {};
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.role = this.authService.getRole();
     this.username = this.authService.getUserName();
-    if (this.role === 'hoofdredacteur') {
-      this.showerror = true;
-    }
   }
-  CreatePostRedirect(): void {
-    this.router.navigate(['/posts']);
+
+  onSicknessQuestionnaire() {
+    this.router.navigate(['/sicknessQuestionnaire']);
   }
 
   onLogout(): void {
     this.authService.logout();
     this.router.navigate(['']);
   }
-
-  GoToPostConcepts(): void {
-    this.router.navigate(['/concepts']);
-  }
-
-  GoToPostWaitingApprovals(): void {
-    this.router.navigate(['/waitingapproval']);
-  }
-
-  GoToNotifications(): void {
-    this.router.navigate(['/notifications']);
-  }
+  
 }
