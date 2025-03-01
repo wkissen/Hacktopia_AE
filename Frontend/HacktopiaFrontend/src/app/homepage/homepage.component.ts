@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@services/auth-service.service';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-homepage',

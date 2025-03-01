@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import axios from 'axios';
+
 
 @Component({
   selector: 'app-question-page',
@@ -18,6 +20,8 @@ export class QuestionPageComponent {
     muscleAches: false,
     coughing: false
   };
+
+  constructor( private router: Router) {}
 
   fever: boolean = false; // Added fever property
 
@@ -40,5 +44,9 @@ export class QuestionPageComponent {
     } catch (error) {
       console.error('Error:', error);
     }
+  }
+
+  ToHomePage(): void {
+    this.router.navigate(['/homepage']);
   }
 }

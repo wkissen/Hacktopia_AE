@@ -1,7 +1,6 @@
 import { AuthService } from '@services/auth-service.service';
 import { FormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +8,6 @@ import { NavbarComponent } from '../navbar/navbar.component';
   standalone: true,
   imports: [
     FormsModule,
-    NavbarComponent
   ]
 })
 export class LoginComponent {
