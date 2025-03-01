@@ -1,5 +1,6 @@
 package be.ae.hackatonae.controller;
 
+import be.ae.hackatonae.domain.Disease;
 import be.ae.hackatonae.domain.Person;
 import be.ae.hackatonae.service.PersonService;
 import org.apache.coyote.Response;
@@ -83,6 +84,17 @@ public class PersonController {
             return ResponseEntity.ok("Medicine removed successfully!");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Failed to remove medicine: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/disease/{name}")
+    public ResponseEntity<?> getDiseaseByPerson(@PathVariable String name) {
+        try {
+            // Get diseases by person
+            List<Disease> diseases = personService.getDiseaseByPerson(name);
+            return ResponseEntity.ok(diseases);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Failed to get diseases: " + e.getMessage());
         }
     }
 }

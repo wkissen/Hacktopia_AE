@@ -1,5 +1,6 @@
 package be.ae.hackatonae.service;
 
+import be.ae.hackatonae.domain.Disease;
 import be.ae.hackatonae.domain.Person;
 import be.ae.hackatonae.repository.PersonRepository;
 import lombok.Data;
@@ -47,5 +48,10 @@ public class PersonService {
         Person person = personRepository.findPersonByName(name);
         person.getMedicines().removeIf(medicine -> medicine.getId() == medicineId);
         personRepository.save(person);
+    }
+
+    public List<Disease> getDiseaseByPerson(String name) {
+        Person person = personRepository.findPersonByName(name);
+        return person.getDiseases();
     }
 }
