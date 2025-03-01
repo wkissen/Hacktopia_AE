@@ -51,4 +51,5 @@
   </button>
 </form>
 
-<app-disease-card *ngIf="disease" [disease]="disease"></app-disease-card>
+<!-- Replace inline disease card with popup component -->
+<app-disease-card-popup *ngIf="disease" [disease]="disease" (closePopup)="disease = null"></app-disease-card-popup>

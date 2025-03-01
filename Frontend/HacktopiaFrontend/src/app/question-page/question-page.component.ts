@@ -4,13 +4,15 @@ import { Router } from '@angular/router';
 import axios from 'axios';
 import { DiseaseCardComponent } from '../disease-card/disease-card.component';
 import { NgIf } from '@angular/common';
+import { AuthService } from '../shared/services/auth-service.service';
+import { DiseaseCardPopupComponent } from '@components/disease-card-popup/disease-card-popup.component';
 
 @Component({
   selector: 'app-question-page',
   templateUrl: './question-page.component.html',
   styleUrls: ['./question-page.component.css'],
   standalone: true,
-  imports: [FormsModule, DiseaseCardComponent, NgIf]
+  imports: [FormsModule, DiseaseCardComponent, DiseaseCardPopupComponent, NgIf]
 })
 export class QuestionPageComponent {
   symptoms = {
@@ -25,7 +27,7 @@ export class QuestionPageComponent {
   fever: boolean = false; // Added fever property
   disease: any; // Added disease property
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private  authService: AuthService ) {}
 
   ngOnInit(): void {
     this.disease = null; // Clear the disease property on initialization
@@ -46,6 +48,7 @@ export class QuestionPageComponent {
     try {
       const response = await axios.post('http://localhost:8080/api/disease', data);
       this.disease = response.data; // Store the response in the disease property
+      await axios.post('http://localhost:8080/api/disease/' + this.authService.getUserName() + '/' + this.disease.id , data);
       console.log('Response:', response.data); // Log the response to verify
       console.log('disease', this.disease);
     } catch (error) {

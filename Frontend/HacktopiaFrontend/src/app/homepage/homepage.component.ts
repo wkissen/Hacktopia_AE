@@ -28,7 +28,7 @@ export class HomepageComponent implements OnInit {
     if (this.username) {
       this.userInfoService.getUserInfo(this.username).subscribe(info => {
         this.userInfo = info;
-        
+
         this.healthBar = 100 - info.diseases.length * 20;
       });
     }
@@ -38,6 +38,9 @@ export class HomepageComponent implements OnInit {
     this.router.navigate(['/sicknessQuestionnaire']);
   }
 
+  onMedicine(){
+    this.router.navigate(['/medicine']);
+  }
   onLogout(): void {
     this.authService.logout();
     this.router.navigate(['']);
