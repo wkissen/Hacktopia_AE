@@ -21,6 +21,8 @@ public class DiseaseService {
     }
 
     public Disease getDisease(DiseaseDTO diseaseDTO) {
+        System.out.println(diseaseDTO.getSymptoms());
+        System.out.println(diseaseDTO.getFever());
         List<Disease> diseases = diseaseRepository.findBySymptomsInAndFever(diseaseDTO.getSymptoms(), diseaseDTO.getFever());
 
         Random random = new Random();
@@ -37,5 +39,9 @@ public class DiseaseService {
         person.getDiseases().add(disease);
 
         personRepository.save(person);
+    }
+
+    public List<Disease> getAllDiseases() {
+        return diseaseRepository.findAll();
     }
 }

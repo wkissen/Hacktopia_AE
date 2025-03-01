@@ -19,7 +19,7 @@ public class DiseaseController {
         this.diseaseService = diseaseService;
     }
 
-    @GetMapping()
+    @PostMapping()
     public ResponseEntity<?> getDisease(@RequestBody DiseaseDTO diseaseDTO) {
         Disease disease = diseaseService.getDisease(diseaseDTO);
         return ResponseEntity.ok(disease);
@@ -29,5 +29,15 @@ public class DiseaseController {
     public ResponseEntity<?> personHasDisease(@PathVariable String name, @PathVariable long id) {
         diseaseService.personHasDisease(name, id);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<?> getDiseases() {
+        try {
+            List<Disease> diseases = diseaseService.getAllDiseases();
+            return ResponseEntity.ok(diseases);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Failed to get diseases: " + e.getMessage());
+        }
     }
 }
