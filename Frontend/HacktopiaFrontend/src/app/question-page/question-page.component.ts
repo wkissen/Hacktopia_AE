@@ -48,8 +48,9 @@ export class QuestionPageComponent {
     try {
       const response = await axios.post('http://localhost:8080/api/disease', data);
       this.disease = response.data; 
-      await axios.post('http://localhost:8080/api/disease/' + this.authService.getUserName() + '/' + this.disease.id , data);
-      //this.medicine = await axios.post('http://localhost:8080/api/medicine/' + this.authService.getUserName() + '/' + this.disease.type , data);
+      await axios.post('http://localhost:8080/api/disease/' + this.authService.getUserName() + '/' + this.disease.id, data);
+      const medicineResponse = await axios.post('http://localhost:8080/api/medicine/' + this.authService.getUserName() + '/' + this.disease.type, data);
+      this.medicine = medicineResponse.data; 
       console.log('Response:', response.data); 
       console.log('disease', this.disease);
     } catch (error) {

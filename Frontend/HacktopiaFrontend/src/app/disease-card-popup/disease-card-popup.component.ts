@@ -9,6 +9,7 @@ import { NgIf } from '@angular/common';
 })
 export class DiseaseCardPopupComponent {
   @Input() disease: any;
+  @Input() medicine: any; 
   @Output() closePopup = new EventEmitter<void>();
 
   onClose(): void {

@@ -36,20 +36,18 @@
       Coughing – Have you had a persistent cough, and if so, is it dry or producing mucus?
     </label>
   </div>
+  
   <div class="mb-4">
     <label class="block text-lg">
       <input type="checkbox" [(ngModel)]="fever" name="fever" class="mr-2">
       Fever – Have you been experiencing a high body temperature or chills?
     </label>
   </div>
-  <button type="submit" class="w-full py-3 px-6 bg-gradient-to-r from-yellow-400 to-orange-600 text-white font-semibold rounded-lg shadow-lg hover:from-yellow-500 hover:to-orange-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition ease-in-out duration-300 transform hover:scale-105">Submit</button>
-
+  <button type="submit" class="w-full py-3 px-6 bg-gradient-to-r from-yellow-400 to-orange-600 text-white font-semibold rounded-lg shadow-lg hover:from-yellow-500 hover:to-orange-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition ease-in-out duration-300 transform hover:scale-105 mb-4">Submit</button>
   <button
-    class="w-full py-3 px-6 bg-gradient-to-r from-yellow-400 to-orange-600 text-white font-semibold rounded-lg shadow-lg hover:from-yellow-500 hover:to-orange-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition ease-in-out duration-300 transform hover:scale-105"
-    (click)="ToHomePage()">
+    class="w-full py-3 px-6 bg-gradient-to-r from-yellow-400 to-orange-600 text-white font-semibold rounded-lg shadow-lg hover:from-yellow-500 hover:to-orange-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition ease-in-out duration-300 transform hover:scale-105">
     HomePage
   </button>
 </form>
 
-<!-- Replace inline disease card with popup component -->
-<app-disease-card-popup *ngIf="disease" [disease]="disease" (closePopup)="disease = null"></app-disease-card-popup>
+<app-disease-card-popup *ngIf="disease" [disease]="disease" [medicine]="medicine" (closePopup)="disease = null"></app-disease-card-popup>
