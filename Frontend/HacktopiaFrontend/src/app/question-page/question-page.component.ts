@@ -27,6 +27,9 @@ export class QuestionPageComponent {
 
   constructor(private router: Router) {}
 
+  ngOnInit(): void {
+    this.disease = null; // Clear the disease property on initialization
+  }
   async onSubmit() {
     const sendSymptomList: string[] = [];
     for (const [key, value] of Object.entries(this.symptoms)) {
@@ -44,6 +47,7 @@ export class QuestionPageComponent {
       const response = await axios.post('http://localhost:8079/api/disease', data);
       this.disease = response.data; // Store the response in the disease property
       console.log('Response:', response.data); // Log the response to verify
+      console.log('disease', this.disease);
     } catch (error) {
       console.error('Error:', error);
     }
