@@ -8,9 +8,8 @@ import { NavbarComponent } from '../navbar/navbar.component';
   templateUrl: './login.component.html',
   standalone: true,
   imports: [
-    FormsModule,
-    NavbarComponent
-  ]
+    FormsModule
+    ]
 })
 export class LoginComponent {
   userName: string = '';
