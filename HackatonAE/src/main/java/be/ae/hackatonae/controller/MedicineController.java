@@ -19,15 +19,17 @@ public class MedicineController {
         this.medicineService = medicineService;
     }
 
-    @RequestMapping("/{Treatment}")
-    public ResponseEntity<?> getMedicine(@PathVariable String Treatment) {
-        List<Medicine> medicine = medicineService.getMedicine(Treatment);
-        return ResponseEntity.ok(medicine);
-    }
-
-    @PostMapping("/{name}/{medicineId}")
-    public ResponseEntity<?> giveMedicineToPerson(@PathVariable String name, @PathVariable Long medicineId) {
+    @PostMapping("/{name}/{Treatment}")
+    public ResponseEntity<?> giveMedicineToPerson(@PathVariable String Treatment, @PathVariable String name) {
+        Long medicineId = medicineService.getMedicine(Treatment).getId();
         medicineService.giveMedicineToPerson(name, medicineId);
         return ResponseEntity.ok().build();
     }
+
+//
+//    @PostMapping("/{name}/{medicineId}")
+//    public ResponseEntity<?> giveMedicineToPerson(@PathVariable String name, @PathVariable Long medicineId) {
+//        medicineService.giveMedicineToPerson(name, medicineId);
+//        return ResponseEntity.ok().build();
+//    }
 }

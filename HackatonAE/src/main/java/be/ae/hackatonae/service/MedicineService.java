@@ -22,19 +22,13 @@ public class MedicineService {
         this.personRepository = personRepository;
     }
 
-    public List<Medicine> getMedicine(String treatment) {
+    public Medicine getMedicine(String treatment) {
         List<Medicine> medicineList = medicineRepository.findMedicineByTreatment(treatment);
 
-        if (medicineList.size() <= 3) {
-            return medicineList;
-        }
 
         Collections.shuffle(medicineList);
 
-        Random random = new Random();
-        int randomIndex = random.nextInt(1, 6);
-
-        return medicineList.subList(0, randomIndex);
+        return medicineList.get(0);
     }
 
     public void giveMedicineToPerson(String name, Long medicineId) {
