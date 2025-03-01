@@ -42,4 +42,9 @@ public class MedicineService {
         person.getMedicines().add(medicine.get());
         personRepository.save(person);
     }
+
+    public List<Medicine> getAllMedicines(String name) {
+        Person person = personRepository.findPersonByName(name);
+        return person.getMedicines();
+    }
 }
