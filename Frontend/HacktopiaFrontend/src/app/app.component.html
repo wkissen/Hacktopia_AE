@@ -1,5 +1,7 @@
-<div class="header">
-</div>
+<ng-container *ngIf="!isLoginPage()">
+  <app-navbar></app-navbar>
+</ng-container>
+<div class="header"></div>
 <div class="main-content">
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>

@@ -1,0 +1,40 @@
+<form (ngSubmit)="onSubmit()" class="max-w-2xl mx-auto mt-20 p-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg shadow-lg text-white">
+  <h2 class="text-2xl font-bold mb-4">What Form of discomfort are you currently experiencing</h2>
+  <div class="mb-4">
+    <label class="block text-lg">
+      <input type="checkbox" [(ngModel)]="symptoms.sleepy" name="sleepy" class="mr-2">
+      Sleepy – Do you feel excessively tired or drowsy throughout the day, even after a full night's sleep?
+    </label>
+  </div>
+  <div class="mb-4">
+    <label class="block text-lg">
+      <input type="checkbox" [(ngModel)]="symptoms.shortnessOfBreath" name="shortnessOfBreath" class="mr-2">
+      Shortness of breath – Do you experience difficulty breathing, even when resting or doing light activities?
+    </label>
+  </div>
+  <div class="mb-4">
+    <label class="block text-lg">
+      <input type="checkbox" [(ngModel)]="symptoms.diarrhea" name="diarrhea" class="mr-2">
+      Diarrhea – Have you been experiencing frequent loose or watery stools?
+    </label>
+  </div>
+  <div class="mb-4">
+    <label class="block text-lg">
+      <input type="checkbox" [(ngModel)]="symptoms.fatigue" name="fatigue" class="mr-2">
+      Fatigue – Do you feel unusually weak or lacking in energy throughout the day?
+    </label>
+  </div>
+  <div class="mb-4">
+    <label class="block text-lg">
+      <input type="checkbox" [(ngModel)]="symptoms.muscleAches" name="muscleAches" class="mr-2">
+      Muscle aches – Have you been feeling soreness or pain in your muscles, even without physical exertion?
+    </label>
+  </div>
+  <div class="mb-4">
+    <label class="block text-lg">
+      <input type="checkbox" [(ngModel)]="symptoms.coughing" name="coughing" class="mr-2">
+      Coughing – Have you had a persistent cough, and if so, is it dry or producing mucus?
+    </label>
+  </div>
+  <button type="submit" class="w-full py-3 px-6 bg-gradient-to-r from-yellow-400 to-orange-600 text-white font-semibold rounded-lg shadow-lg hover:from-yellow-500 hover:to-orange-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition ease-in-out duration-300 transform hover:scale-105">Submit</button>
+</form>

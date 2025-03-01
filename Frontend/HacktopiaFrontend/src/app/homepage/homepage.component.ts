@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
   selector: 'app-homepage',
   imports: [FormsModule],
   templateUrl: './homepage.component.html',
+  standalone: true,
 })
 export class HomepageComponent implements OnInit {
   username: string | null = null;
@@ -27,5 +28,5 @@ export class HomepageComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['']);
   }
-  
+
 }
