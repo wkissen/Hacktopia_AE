@@ -1,9 +1,9 @@
 export class User {
     username: string;
-    role: string;
+    password: string;
 
-    constructor(username: string, role: string) {
+    constructor(username: string, password: string) {
         this.username = username;
-        this.role = role;
+        this.password = password;
     }
 }

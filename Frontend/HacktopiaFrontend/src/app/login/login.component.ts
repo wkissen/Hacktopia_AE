@@ -15,23 +15,23 @@ import {Component} from '@angular/core';
 
 export class LoginComponent {
   userName: string = '';
-  role: string = '';
+  password: string = '';
   errorMessage: string = '';
   showerror: boolean = false;
 
   constructor(private authService: AuthService) {}
 
   onLogin(): void {
-    if (this.userName && this.role) {
-      if(!this.authService.login(this.userName, this.role)){
+    if (this.userName && this.password) {
+      if(!this.authService.login(this.userName, this.password)) {
         this.showerror = true;
-        this.errorMessage = 'Invalid username or role.';
+        this.errorMessage = 'Invalid username or password.';
         return;
       }
       this.errorMessage = '';
     } else {
       this.showerror = true;
-      this.errorMessage = 'Please enter both username and role.';
+      this.errorMessage = 'Please enter both username and password.';
     }
   }
 }

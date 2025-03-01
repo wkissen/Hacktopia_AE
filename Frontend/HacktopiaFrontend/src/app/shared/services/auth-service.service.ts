@@ -11,23 +11,25 @@ export class AuthService {
 
   // Hardcoded lijst van gebruikers
   private readonly users: User[] = [
-    new User('wesley', 'hoofdredacteur'),
-    new User('dries', 'redacteur'),
-    new User('tom', 'gebruiker'),
+    new User('wesley', 'PXLstudent'),
+    new User('sander', 'PXLstudent'),
+    new User('sami', 'PXLstudent'),
+    new User('rune', 'PXLstudent'),
   ];
 
   constructor(private router: Router) {
-    // Probeer de gebruiker te laden bij het initialiseren
-    const savedUser = localStorage.getItem(this.STORAGE_KEY);
-    if (savedUser) {
-      this.currentUser = JSON.parse(savedUser) as User;
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const savedUser = localStorage.getItem(this.STORAGE_KEY);
+      if (savedUser) {
+        this.currentUser = JSON.parse(savedUser) as User;
+      }
     }
   }
 
-  login(userName: string, role: string): boolean {
+  login(userName: string, password: string): boolean {
     // Controleer of de gebruiker bestaat in de hardcoded lijst
     const user = this.users.find(
-      (u) => u.username === userName && u.role === role
+      (u) => u.username === userName && u.password === password
     );
 
     if (user) {
@@ -47,7 +49,7 @@ export class AuthService {
   }
 
   getRole(): string | null {
-    return this.currentUser?.role || null;
+    return this.currentUser?.password || null;
   }
 
   isLoggedIn(): boolean {
