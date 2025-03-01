@@ -2,14 +2,15 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import axios from 'axios';
-
+import { DiseaseCardComponent } from '../disease-card/disease-card.component';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-question-page',
   templateUrl: './question-page.component.html',
   styleUrls: ['./question-page.component.css'],
   standalone: true,
-  imports: [FormsModule]
+  imports: [FormsModule, DiseaseCardComponent, NgIf]
 })
 export class QuestionPageComponent {
   symptoms = {
@@ -21,9 +22,10 @@ export class QuestionPageComponent {
     coughing: false
   };
 
-  constructor( private router: Router) {}
-
   fever: boolean = false; // Added fever property
+  disease: any; // Added disease property
+
+  constructor(private router: Router) {}
 
   async onSubmit() {
     const sendSymptomList: string[] = [];
@@ -40,7 +42,8 @@ export class QuestionPageComponent {
 
     try {
       const response = await axios.post('http://localhost:8079/api/disease', data);
-      console.log('Response:', response.data);
+      this.disease = response.data; // Store the response in the disease property
+      console.log('Response:', response.data); // Log the response to verify
     } catch (error) {
       console.error('Error:', error);
     }

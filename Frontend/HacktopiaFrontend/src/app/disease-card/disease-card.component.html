@@ -1,0 +1,13 @@
+<div class="card" *ngIf="disease">
+  <h2>{{ disease.diseaseName }}</h2>
+  <p><strong>Type:</strong> {{ disease.type }}</p>
+  <p><strong>Heart Rate:</strong> {{ disease.heartRate }}</p>
+  <p><strong>Breath Rate:</strong> {{ disease.breathRate }}</p>
+  <p><strong>Blood Pressure:</strong> {{ disease.bloodPressure }}</p>
+  <p><strong>Duration:</strong> {{ disease.duration }}</p>
+  <p><strong>Fever:</strong> {{ disease.fever }}</p>
+  <p><strong>Infectious:</strong> {{ disease.infectious }}</p>
+  <p><strong>Incubation Time:</strong> {{ disease.incubationTime }} days</p>
+  <p><strong>Period of Illness:</strong> {{ disease.periodOfIllness }} days</p>
+  <p><strong>Symptoms:</strong> {{ disease.symptoms.join(', ') }}</p>
+</div>
