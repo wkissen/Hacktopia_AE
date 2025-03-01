@@ -24,8 +24,8 @@ public class DiseaseController {
 
     @GetMapping()
     public ResponseEntity<?> getDisease(@RequestBody DiseaseDTO diseaseDTO) {
-        List<Disease> diseases = diseaseService.getDisease(diseaseDTO);
-        return ResponseEntity.ok(diseases);
+        Disease disease = diseaseService.getDisease(diseaseDTO);
+        return ResponseEntity.ok(disease);
     }
 
 }

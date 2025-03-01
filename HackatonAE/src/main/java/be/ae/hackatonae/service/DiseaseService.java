@@ -6,6 +6,7 @@ import be.ae.hackatonae.repository.DiseaseRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class DiseaseService {
@@ -15,7 +16,12 @@ public class DiseaseService {
         this.diseaseRepository = diseaseRepository;
     }
 
-    public List<Disease> getDisease(DiseaseDTO diseaseDTO) {
-        return diseaseRepository.findBySymptomsInAndFever(diseaseDTO.getSymptoms(), diseaseDTO.getFever());
+    public Disease getDisease(DiseaseDTO diseaseDTO) {
+        List<Disease> diseases = diseaseRepository.findBySymptomsInAndFever(diseaseDTO.getSymptoms(), diseaseDTO.getFever());
+
+        Random random = new Random();
+        int randomIndex = random.nextInt(diseases.size());
+
+        return diseases.get(randomIndex);
     }
 }
